@@ -1,0 +1,119 @@
+@import "~bootstrap/scss/functions";
+
+@import "_variables.scss";
+
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+@import "~bootstrap/scss/bootstrap";
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200..900&display=swap');
+
+@import "_navbar.scss";
+@import "_card.scss";
+@import "_offcanvas.scss";
+@import "_alert.scss";
+
+html,
+body{
+    height: 100%;
+}
+#app{
+    width: 100%;
+    height: 100%;
+}
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+main {
+    flex: 1;
+}
+.footer-area {
+    &:not(:last-child) {
+        border-right: solid 1px $gray-700;
+    }
+    @include media-breakpoint-down(sm) {
+        &:nth-child(2n) {
+            border-right: none;
+        }
+        &:nth-child(n+3) {
+            border-top: solid 1px $gray-700;
+        }
+    }
+}
+.gap-2 {
+    row-gap: 0.5rem;
+}
+.gap-4 {
+    row-gap: 1rem;
+}
+.img-md {
+    width: 60px;
+    height: 60px;
+}
+.img-lg {
+    width: 80px;
+    height: 80px;
+}
+
+.index-banner{
+    background: linear-gradient(to right, #253d5a 0%, #1c2c3f 35%, #151d26 70%, #0f1216 100%);
+}
+.index-texture{
+    &::before{
+        content: "131322";
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 10rem;
+        display: block;
+        background-size: 3rem;
+        background-image: url('../static/images/img-bg-texture.png');
+        z-index: -1;
+    }
+}
+.index-main{
+    animation: fadeUp 3s;
+    animation-delay: 1s;
+}
+@keyframes fadeUp {
+    0%{
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+.category-hero{
+    height: 300px;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+}
+.custom-select{
+    width: initial;
+}
+.page-item.active .page-link,
+.page-link:focus,
+.page-link:hover {
+    cursor: pointer;
+    z-index: auto !important;
+}
+.custom-file-label::after {
+    content: "選擇檔案" !important;
+}
+.table-backend{
+    th{
+        font-size: 0.875rem;
+    }
+    td{
+        vertical-align: middle;
+    }
+}
