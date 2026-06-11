@@ -2,7 +2,7 @@
     <div style="margin-top:90px">
         <section
             class="category-hero"
-            style="background-image: url('/static/images/img-about-bg.jpg');">
+            :style="{ backgroundImage: `url(${require('@/assets/images/img-about-bg.jpg')})` }">
             <div class="container h-100">
                 <div class="row flex-column justify-content-end h-100">
                     <div class="text-right">
@@ -31,10 +31,10 @@
                         </div>
                     </div>
                     <div class="col-md-6 d-flex flex-column justify-content-center order-2 order-md-2">
-                        <img class="img-fluid" src="/static/images/img-packaging-card.jpg" alt="">
+                        <img class="img-fluid" :src="require('@/assets/images/img-packaging-card.jpg')" alt="">
                     </div>
                     <div class="col-md-6 d-flex flex-column justify-content-center order-4 order-md-3">
-                        <img class="img-fluid" src="/static/images/img-zipper-bag.jpg" alt="">
+                        <img class="img-fluid" :src="require('@/assets/images/img-zipper-bag.jpg')" alt="">
                     </div>
                     <div class="col-md-6 d-flex flex-column justify-content-center order-3 order-md-4">
                         <div class="text-center text-md-left p-5 p-md-0">
@@ -68,21 +68,21 @@
                             </p>
                             <ul class="list-unstyled">
                                 <li class="d-flex align-items-center mb-4">
-                                    <img class="img-md" src="/static/images/icon-contact-mail.png" alt="">
+                                    <img class="img-md" :src="require('@/assets/images/icon-contact-mail.png')" alt="">
                                     <div class="ml-2">
                                         <h4 class="h6 text-main02">Email Address</h4>
                                         <small class="text-main01">service@jewelry-pix.com</small>
                                     </div>
                                 </li>
                                 <li class="d-flex align-items-center mb-4">
-                                    <img class="img-md" src="/static/images/icon-contact-phone.png" alt="">
+                                    <img class="img-md" :src="require('@/assets/images/icon-contact-phone.png')" alt="">
                                     <div class="ml-2">
                                         <h4 class="h6 text-main02">Phone Numbers</h4>
                                         <small class="text-main01">0987-654-321</small>
                                     </div>
                                 </li>
                                 <li class="d-flex align-items-center mb-4">
-                                    <img class="img-md" src="/static/images/icon-contact-line.png" alt="">
+                                    <img class="img-md" :src="require('@/assets/images/icon-contact-line.png')" alt="">
                                     <div class="ml-2">
                                         <h4 class="h6 text-main02">Line Account</h4>
                                         <small class="text-main01">@111pfeca</small>

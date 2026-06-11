@@ -10,7 +10,7 @@ export default {
         tempProduct: {},
         order: {
             id: '',
-            is_paid: '',
+            is_paid: false,
             user: {
                 name: '',
             },
@@ -140,7 +140,11 @@ export default {
             try {
                 const res = await axios.post(api,orderId);
                 if(res.data.success){
-                    context.commit('ORDER', res.data.order);
+                    context.commit('CARTS', {
+                        carts: [],
+                        total: 0,
+                        final_total: 0
+                    });
                 }else{
                     throw new Error(res.data.message);
                 }

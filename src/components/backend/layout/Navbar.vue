@@ -5,7 +5,7 @@
                 <router-link
                     to="/"
                     class="navbar-brand"
-                    style="backgroundImage:url('/static/images/logo-w.png')">JewelryPix
+                    :style="{ backgroundImage: `url(${require('@/assets/images/logo-w.png')})` }">JewelryPix
                 </router-link>
             </h1>
             <ul class="navbar-nav ml-auto px-3">

@@ -15,7 +15,7 @@
                 </router-link>
             </div>
             <div class="index-main" style="max-width: 300px">
-                <img class="img-fluid" src="/static/images/img-featured-products.png" alt="">
+                <img class="img-fluid" :src="require('@/assets/images/img-featured-products.png')" alt="">
             </div>
         </div>
     </div>

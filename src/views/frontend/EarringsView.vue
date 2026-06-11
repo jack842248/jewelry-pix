@@ -2,7 +2,8 @@
     <div style="margin-top:90px">
         <section
             class="category-hero"
-            style="background-image: url('/static/images/img-category-hero1.jpg');">
+            
+            :style="{ backgroundImage: `url(${require('@/assets/images/img-category-hero1.jpg')})` }">
             <div class="container h-100">
                 <div class="row flex-column justify-content-end h-100">
                     <div class="text-right">

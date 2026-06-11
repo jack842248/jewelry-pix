@@ -48,22 +48,22 @@
             <div class="form-row gap-2">
                 <div class="col-md-6">
                     <router-link to="/">
-                        <img class="img-fluid" src="/static/images/img-category-theme1.jpg" alt="">
+                        <img class="img-fluid" :src="require('@/assets/images/img-category-theme1.jpg')" alt="">
                     </router-link>
                 </div>
                 <div class="col-md-6">
                     <router-link to="/">
-                        <img class="img-fluid" src="/static/images/img-category-theme2.jpg" alt="">
+                        <img class="img-fluid" :src="require('@/assets/images/img-category-theme2.jpg')" alt="">
                     </router-link>
                 </div>
                 <div class="col-md-6">
                     <router-link to="/">
-                        <img class="img-fluid" src="/static/images/img-category-theme3.jpg" alt="">
+                        <img class="img-fluid" :src="require('@/assets/images/img-category-theme3.jpg')" alt="">
                     </router-link>
                 </div>
                 <div class="col-md-6">
                     <router-link to="/">
-                        <img class="img-fluid" src="/static/images/img-category-theme4.jpg" alt="">
+                        <img class="img-fluid" :src="require('@/assets/images/img-category-theme4.jpg')" alt="">
                     </router-link>
                 </div>
             </div>

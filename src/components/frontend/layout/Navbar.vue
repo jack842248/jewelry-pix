@@ -22,9 +22,10 @@
             </button>
             <button
                 type="button"
-                class="text-main03 bg-transparent border-0 order-3 order-md-3"
+                class="text-main03 bg-transparent border-0 order-3 order-md-3 position-relative"
                 @click="offcanvas = true">
                 <i class="fas fa-shopping-bag fa-lg"></i>
+                <small v-if="carts.carts.length" class="carts-num">{{ carts.carts.length }}</small>
             </button>
             <div
                 class="offcanvas-overlay"
@@ -209,9 +210,11 @@ export default{
         },
         navbarLogoUrl: function(){
             if(this.isHome){
-                return this.isScrolled?'/static/images/logo-b.png':'/static/images/logo-y.png'
+                return this.isScrolled
+                ? require('@/assets/images/logo-b.png')
+                : require('@/assets/images/logo-y.png')
             }else{
-                return '/static/images/logo-b.png'
+                return require('@/assets/images/logo-b.png')
             }
         },
         ...mapGetters('frontend',['carts'])

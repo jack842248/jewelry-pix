@@ -92,7 +92,8 @@
                                 <span class="nav-link pl-0 text-gray-600">慶開幕全館商品滿299免運</span>
                             </li>
                             <li>
-                                <img class="img-fluid" src="/static/images/img-payment-option.png" alt="">
+                                
+                                <img class="img-fluid" :src="require('@/assets/images/img-payment-option.png')" alt="">
                             </li>
                         </ul>
                     </div>
