@@ -7,15 +7,12 @@
                         <div class="text-center">
                             <img
                                 class="img-lg mb-3"
-                                src="/static/images/logo-circle.png"
+                                :src="require('@/assets/images/logo-circle.png')"
                                 alt="">
                         </div>
                         <ul class="nav nav-tabs mb-4">
                             <li class="nav-item flex-grow-1">
                                 <a class="text-center nav-link active">管理員者身份</a>
-                            </li>
-                            <li class="nav-item flex-grow-1">
-                                <a class="text-center nav-link">一般會員身份</a>
                             </li>
                         </ul>
                         <form class="form-signin" @keyup.enter.prevent="signin">
@@ -35,10 +32,10 @@
                                     v-model="user.username"
                                 />
                             </div>
-                            <div class="from-group mb-4">
+                            <div class="from-group mb-4 position-relative">
                                 <label for="inputPassword" class="sr-only">Password</label>
                                 <input
-                                    type="password"
+                                    :type="showPassword?'text':'password'"
                                     id="inputPassword"
                                     class="form-control"
                                     autocomplete="current-password"
@@ -46,6 +43,18 @@
                                     required
                                     v-model="user.password"
                                 />
+                                <button v-if="!showPassword" type="button"
+                                    class="position-absolute border-0 bg-transparent"
+                                    style="top: 4px;right: 4px"
+                                    @click="showPassword = true">
+                                    <i class="fas fa-eye-slash text-main01"></i>
+                                </button>
+                                <button v-else type="button"
+                                    class="position-absolute border-0 bg-transparent"
+                                    style="top: 4px;right: 4px"
+                                    @click="showPassword = false">
+                                    <i class="fas fa-eye text-main01"></i>
+                                </button>
                             </div>
                             <button
                                 class="btn btn-lg btn-main01 btn-block"
@@ -69,6 +78,7 @@ export default {
                 username: "",
                 password: "",
             },
+            showPassword: false
         };
     },
     methods: {

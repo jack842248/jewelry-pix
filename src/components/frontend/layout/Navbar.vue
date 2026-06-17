@@ -86,17 +86,35 @@
                             <p>總共 {{ (carts.carts && carts.carts.length) || 0 }} 項</p>
                             <p class="text-main05">小計 NT{{ carts.total | currency }}</p>
                         </div>
-                        <router-link
+                        <!-- <router-link
                             to="/carts"
                             class="btn btn-outline-main01 btn-block"
                             active-class="">
                             查看購物車
-                        </router-link>
-                        <router-link
-                            to="/checkout"
+                        </router-link> -->
+                        <button
+                            type="button"
+                            class="btn btn-outline-main01 btn-block"
+                            active-class=""
+                            @click="checkout(false)">
+                            查看購物車
+                        </button>
+                        <!-- <router-link
+                            :to="{
+                                path: '/cart',
+                                state:{
+                                    isContact1: true
+                                }
+                            }"
                             class="btn btn-main01 btn-block">
                             前往結帳
-                        </router-link>
+                        </router-link> -->
+                        <button
+                            type="button"
+                            class="btn btn-main01 btn-block"
+                            @click="checkout(true)">
+                            前往結帳
+                        </button>
                     </div>
                 </div>
             </div>
@@ -189,6 +207,11 @@ export default{
                 console.error('刪除購物車失敗',error);
             }
         },
+        checkout(boolean){
+            this.$store.dispatch('frontend/checkout',boolean);
+            this.$router.push('/carts');
+            this.offcanvas = false;
+        }
     },
     computed:{
         isHome: function(){

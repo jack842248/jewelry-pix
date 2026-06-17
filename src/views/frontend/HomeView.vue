@@ -47,23 +47,23 @@
             </div>
             <div class="form-row gap-2">
                 <div class="col-md-6">
-                    <router-link to="/">
-                        <img class="img-fluid" :src="require('@/assets/images/img-category-theme1.jpg')" alt="">
+                    <router-link to="/store/clip-on-earrings">
+                        <img class="img-fluid" :src="require('@/assets/images/img-theme-clip-on-earrings.jpg')" alt="耳夾耳環系列">
                     </router-link>
                 </div>
                 <div class="col-md-6">
-                    <router-link to="/">
-                        <img class="img-fluid" :src="require('@/assets/images/img-category-theme2.jpg')" alt="">
+                    <router-link to="/store/crystal-bracelets">
+                        <img class="img-fluid" :src="require('@/assets/images/img-theme-crystal-bracelets.jpg')" alt="水晶手環">
                     </router-link>
                 </div>
                 <div class="col-md-6">
-                    <router-link to="/">
-                        <img class="img-fluid" :src="require('@/assets/images/img-category-theme3.jpg')" alt="">
+                    <router-link to="/store/christmas-spin">
+                        <img class="img-fluid" :src="require('@/assets/images/img-theme-christmas-spin.jpg')" alt="聖誕轉轉">
                     </router-link>
                 </div>
                 <div class="col-md-6">
-                    <router-link to="/">
-                        <img class="img-fluid" :src="require('@/assets/images/img-category-theme4.jpg')" alt="">
+                    <router-link to="/store/sterling-silver">
+                        <img class="img-fluid" :src="require('@/assets/images/img-theme-sterling-silver.jpg')" alt="925銀飾">
                     </router-link>
                 </div>
             </div>

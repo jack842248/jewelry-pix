@@ -113,6 +113,42 @@ const router = new VueRouter({
                                 breadcrumb: true
                             }
                         },
+                        {
+                            name: '耳夾耳環系列',
+                            path: 'clip-on-earrings',
+                            component: ()=> import('@/views/frontend/ClipOnEarringsView.vue'),
+                            meta: {
+                                title: '耳夾耳環系列',
+                                breadcrumb: true
+                            }
+                        },
+                        {
+                            name: '水晶手環',
+                            path: 'crystal-bracelets',
+                            component: ()=> import('@/views/frontend/CrystalBraceletsView.vue'),
+                            meta: {
+                                title: '水晶手環',
+                                breadcrumb: true
+                            }
+                        },
+                        {
+                            name: '聖誕轉轉',
+                            path: 'christmas-spin',
+                            component: ()=> import('@/views/frontend/ChristmasSpinView.vue'),
+                            meta: {
+                                title: '聖誕轉轉',
+                                breadcrumb: true
+                            }
+                        },
+                        {
+                            name: '925銀飾',
+                            path: 'sterling-silver',
+                            component: ()=> import('@/views/frontend/SterlingSilverView.vue'),
+                            meta: {
+                                title: '925銀飾',
+                                breadcrumb: true
+                            }
+                        },
                     ]
                 },
                 {

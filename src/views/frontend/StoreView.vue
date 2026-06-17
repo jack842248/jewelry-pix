@@ -34,7 +34,7 @@
                             <button
                                 type="button"
                                 class="card-img-top border-0 p-0"
-                                @click="productDetail(item.id)">
+                                @click="openProductDetail(item.id)">
                                 <img class="img-fluid" :src="item.imageUrl" alt="">
                             </button>
                             <div class="card-body text-center">

@@ -3,6 +3,7 @@ import axios from 'axios'
 export default {
     namespaced: true,
     state: {
+        isContact: false,
         products: [],
         carts: {
             carts:[]
@@ -167,6 +168,15 @@ export default {
                 context.dispatch('setLoading', false, { root: true });
             }
         },
+        //前台直接進入結帳
+        checkout(context,boolean){
+            context.dispatch("setLoading", true, { root: true });
+            try {
+                context.commit('ISCONTACT',boolean);
+            } finally {
+                context.dispatch("setLoading", false, { root: true });
+            }
+        }
     },
     mutations: {
         PRODUCTS(state, products){
@@ -182,11 +192,14 @@ export default {
         TEMPPRODUCT(state, products){
             state.tempProduct = {
                 ...products,
-                num: ''
+                num: 0
             }
         },
         ORDER(state, order){
             state.order = order;
+        },
+        ISCONTACT(state, boolean){
+            state.isContact = boolean;
         }
     },
     getters:{
@@ -201,6 +214,9 @@ export default {
         },
         tempProduct(state){
             return state.tempProduct;
+        },
+        isContact(state){
+            return state.isContact;
         },
     }
 };

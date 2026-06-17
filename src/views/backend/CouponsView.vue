@@ -18,6 +18,7 @@
                 <thead>
                     <tr>
                         <th class="text-center">名稱</th>
+                        <th class="text-center">優惠碼</th>
                         <th class="text-center">折扣百分比</th>
                         <th class="text-center">到期日</th>
                         <th class="text-center">是否啟用</th>
@@ -27,6 +28,7 @@
                 <tbody>
                     <tr v-for="item in coupons" :key="item.id">
                         <td class="text-center">{{ item.title }}</td>
+                        <td class="text-center">{{ item.code }}</td>
                         <td class="text-center">{{ item.percent }}%</td>
                         <td class="text-center">{{ new Date(item.due_date * 1000).toISOString().split('T')[0] }}</td>
                         <td class="text-center">

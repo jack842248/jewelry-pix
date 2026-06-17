@@ -2,11 +2,11 @@
     <div style="margin-top:90px">
         <section
             class="category-hero"
-            :style="{ backgroundImage: `url(${require('@/assets/images/img-hero-bracelet.jpg')})` }">
+            :style="{ backgroundImage: `url(${require('@/assets/images/img-hero-christmas-spin.jpg')})` }">
             <div class="container h-100">
                 <div class="row flex-column justify-content-end h-100">
                     <div class="text-right">
-                        <h2 class="pr-3">手鍊</h2>
+                        <h2 class="pr-3">聖誕轉轉系列</h2>
                         <slot name="breadcrumb"></slot>
                     </div>
                 </div>
@@ -17,7 +17,9 @@
                 <div class="pt-5 pb-4">
                     <div class="d-flex justify-content-between align-items-center">
                         <p class="text-main01 mb-0">顯示結果，共{{ products.length }}項</p>
-                        <select class="custom-select" v-model="sortBy">
+                        <select
+                            class="custom-select custom-select-sm"
+                            v-model="sortBy">
                             <option value="price-asc">依價格排序低至高</option>
                             <option value="price-desc">依價格排序高至低</option>
                         </select>
@@ -39,7 +41,7 @@
                                 <h3 class="card-title h6 text-nowrap">{{ item.title }}</h3>
                                 <p class="card-text small">
                                     <del>NT{{ item.origin_price | currency }}</del>
-                                    <strong class="text-main05">NT{{ item.price | currency }}</strong>
+                                    <strong class="text-main05">NT${{ item.price | currency }}</strong>
                                 </p>
                                 <button
                                     type="button"
@@ -94,7 +96,7 @@ export default {
                 console.error('打開購物車失敗',error)
             }
         },
-        ...mapActions('frontend',['getProducts'])
+        ...mapActions('frontend',['getProducts']),
     },
     computed:{
         sortPrice: function(){
@@ -107,7 +109,7 @@ export default {
             })
         },
         products: function(){
-            return this.$store.state.frontend.products.filter(item=> item.category == '手鍊');
+            return this.$store.state.frontend.products.filter(item=>item.content == '聖誕轉轉')
         },
         ...mapGetters('frontend',['carts','tempProduct'])
     },

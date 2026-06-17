@@ -319,7 +319,6 @@ export default {
                 },
                 message: ''
             },
-            isContact: false
         };
     },
     methods: {
@@ -382,7 +381,7 @@ export default {
         ...mapActions('frontend',['getCarts'])
     },
     computed:{
-        ...mapGetters('frontend',['carts'])
+        ...mapGetters('frontend',['carts','isContact'])
     },
     created() {
         this.getCarts();
