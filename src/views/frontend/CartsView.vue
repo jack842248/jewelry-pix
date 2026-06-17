@@ -94,7 +94,7 @@
                                 <button
                                     type="button"
                                     class="btn btn-block btn-lg btn-main01 mb-4"
-                                    @click="isContact = true">
+                                    @click="checkout(true)">
                                     結帳
                                 </button>
                                 <p class="text-dark small mb-4">
@@ -279,7 +279,7 @@
                             <button
                                 type="button"
                                 class="btn btn-lg btn-outline-main01 btn-block mb-4"
-                                @click="isContact = false">
+                                @click="checkout(false)">
                                 回購物車
                             </button>
                         </div>
@@ -377,6 +377,13 @@ export default {
                     console.error('建立訂單失敗',error);
                 }
             }
+        },
+        checkout(boolean){
+            this.$store.dispatch('frontend/checkout',boolean);
+            if (this.$route.path !== '/carts') {
+                this.$router.push('/carts');
+            }
+            this.offcanvas = false;
         },
         ...mapActions('frontend',['getCarts'])
     },
