@@ -1,25 +1,25 @@
 <template>
-    <header class="index-banner">
-        <div class="container">
-            <Navbar></Navbar>
-            <Jumbotron v-if="isHome"></Jumbotron>
-        </div>
-    </header>
+  <header class="index-banner">
+    <div class="container">
+      <Navbar />
+      <Jumbotron v-if="isHome" />
+    </div>
+  </header>
 </template>
 
 <script>
-import Navbar from '@/components/frontend/layout/Navbar.vue';
-import Jumbotron from '@/components/frontend/layout/Jumbotron.vue';
+import Navbar from "@/components/frontend/layout/Navbar.vue";
+import Jumbotron from "@/components/frontend/layout/Jumbotron.vue";
 
-export default{
-    components: {
-        Navbar,
-        Jumbotron
+export default {
+  components: {
+    Navbar,
+    Jumbotron,
+  },
+  computed: {
+    isHome: function () {
+      return this.$route.path == "/";
     },
-    computed:{
-        isHome: function(){
-            return this.$route.path == '/'
-        }
-    }
-}
+  },
+};
 </script>

@@ -1,27 +1,23 @@
 <template>
-    <div class="h-100">
-        <loading
-            :active.sync="isLoading"
-            transition="fade"
-            loader="dots">
-        </loading>
-        <AlertMessage></AlertMessage>
-        <router-view></router-view>
-    </div>
+  <div class="h-100">
+    <Loading :active="isLoading" transition="fade" loader="dots" />
+    <AlertMessage />
+    <router-view />
+  </div>
 </template>
 
 <script>
-import AlertMessage from "@/components/AlertMessage.vue";
+import AlertMessage from "@/components/common/AlertMessage.vue";
 
 export default {
-    components: {
-        AlertMessage,
+  components: {
+    AlertMessage,
+  },
+  computed: {
+    isLoading: function () {
+      return this.$store.getters.isLoading;
     },
-    computed:{
-        isLoading: function(){
-            return this.$store.state.isLoading
-        }
-    }
+  },
 };
 </script>
 

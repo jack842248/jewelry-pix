@@ -1,0 +1,58 @@
+export const categories = [
+  {
+    slug: "earrings",
+    title: "耳環",
+    heroImage: "img-hero-earrings.jpg",
+    filterField: "category",
+    filterValue: "耳環",
+  },
+  {
+    slug: "rings",
+    title: "戒指",
+    heroImage: "img-hero-rings.jpg",
+    filterField: "category",
+    filterValue: "戒指",
+  },
+  {
+    slug: "necklace",
+    title: "項鍊",
+    heroImage: "img-hero-necklace.jpg",
+    filterField: "category",
+    filterValue: "項鍊",
+  },
+  {
+    slug: "bracelet",
+    title: "手鍊",
+    heroImage: "img-hero-bracelet.jpg",
+    filterField: "category",
+    filterValue: "手鍊",
+  },
+  {
+    slug: "clip-on-earrings",
+    title: "耳夾耳環系列",
+    heroImage: "img-hero-clip-on-earrings.jpg",
+    filterField: "content",
+    filterValue: "耳夾耳環系列",
+  },
+  {
+    slug: "crystal-bracelets",
+    title: "水晶手環",
+    heroImage: "img-hero-crystal-bracelets.jpg",
+    filterField: "content",
+    filterValue: "水晶手環",
+  },
+  {
+    slug: "christmas-spin",
+    title: "聖誕轉轉系列",
+    heroImage: "img-hero-christmas-spin.jpg",
+    filterField: "content",
+    filterValue: "聖誕轉轉",
+  },
+  {
+    slug: "sterling-silver",
+    title: "925銀飾系列",
+    heroImage: "img-hero-sterling-silver.jpg",
+    filterField: "content",
+    filterValue: "S925銀針",
+  },
+];
