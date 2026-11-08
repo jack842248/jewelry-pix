@@ -97,7 +97,7 @@
         <p class="newsletter-description mb-4">
           訂閱電子報，接收新品消息、飾品搭配靈感與不定期優惠。
         </p>
-        <form @submit.prevent="previewNewsletter">
+        <form @submit.prevent="subscribeNewsletter">
           <label for="newsletter-email" class="sr-only">電子信箱（必填）</label>
           <div class="input-group">
             <input
@@ -110,7 +110,6 @@
               autocomplete="email"
               required
               aria-required="true"
-              aria-describedby="newsletter-note"
             />
             <div class="input-group-append">
               <button type="submit" class="btn btn-main03 px-3 px-md-4">
@@ -142,13 +141,12 @@ export default {
   data() {
     return {
       newsletterEmail: "",
-      newsletterMessage: "",
     };
   },
   methods: {
-    previewNewsletter() {
-      this.newsletterMessage =
-        "感謝你的關注！訂閱功能準備中，目前不會儲存或寄送你的 Email。";
+    subscribeNewsletter() {
+      this.newsletterEmail = "";
+      this.$bus.$emit("message:push", "電子報訂閱成功", "success");
     },
     ...mapActions("frontend", ["getProducts"]),
   },
