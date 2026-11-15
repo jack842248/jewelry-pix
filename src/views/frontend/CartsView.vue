@@ -18,7 +18,7 @@
           </div>
           <div v-else class="row">
             <div class="col-md-8">
-              <table class="table table-borderless mb-5">
+              <table class="table table-borderless cart-products-table mb-5">
                 <tbody>
                   <tr v-for="item in carts.carts" :key="item.id">
                     <td class="align-middle" width="15%">

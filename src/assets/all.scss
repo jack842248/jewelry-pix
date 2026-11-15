@@ -147,3 +147,12 @@ main {
     color: $danger;
   }
 }
+
+@include media-breakpoint-down(xs) {
+  .cart-products-table {
+    th,
+    td {
+      padding: 0.5rem $table-cell-padding-sm;
+    }
+  }
+}

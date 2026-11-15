@@ -147,7 +147,7 @@ const router = new VueRouter({
           name: "登入",
           path: "/login",
           meta: {
-            title: "會員登入",
+            title: "後台登入",
             robots: "noindex, nofollow",
           },
           component: () => import("@/views/frontend/LoginView.vue"),
@@ -248,7 +248,16 @@ router.afterEach((to) => {
   const robotsRoute = matchedRoutes.find(
     (route) => route.meta && route.meta.robots
   );
-  const title = pageRoute ? pageRoute.meta.title : "首頁";
+  const category =
+    to.name === "商品分類"
+      ? categories.find((item) => item.slug === to.params.slug)
+      : null;
+
+  const title = category
+    ? category.title
+    : pageRoute
+    ? pageRoute.meta.title
+    : "首頁";
   const description =
     pageRoute && pageRoute.meta.description
       ? pageRoute.meta.description

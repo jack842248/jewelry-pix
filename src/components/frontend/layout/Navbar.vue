@@ -71,14 +71,41 @@
                     >
                   </td>
                   <td class="align-middle small text-right" width="5%">
-                    <div class="text-center border" style="width: 25px">
-                      {{ item.qty }}
+                    <div class="d-flex align-items-center">
+                      <button
+                        type="button"
+                        class="img-sm flex-shrink-0 border-0 bg-gray-200 rounded"
+                        :disabled="
+                          isUpdatingCart || isApplyingCoupon || item.qty <= 1
+                        "
+                        :aria-label="`減少 ${item.product.title} 的數量`"
+                        @click="updateQuantity(item, -1)"
+                      >
+                        <i class="fas fa-minus fa-xs" aria-hidden="true"></i>
+                      </button>
+                      <div
+                        class="text-center bg-gray-100 flex-shrink-0"
+                        style="min-width: 40px; height: 30px; line-height: 2.5"
+                        aria-live="polite"
+                      >
+                        {{ item.qty }}
+                      </div>
+                      <button
+                        type="button"
+                        class="img-sm flex-shrink-0 border-0 bg-gray-200 rounded"
+                        :disabled="isUpdatingCart || isApplyingCoupon"
+                        :aria-label="`增加 ${item.product.title} 的數量`"
+                        @click="updateQuantity(item, 1)"
+                      >
+                        <i class="fas fa-plus fa-xs" aria-hidden="true"></i>
+                      </button>
                     </div>
                   </td>
                   <td class="align-middle small text-right" width="5%">
                     <button
                       type="button"
                       class="btn"
+                      :disabled="isUpdatingCart || isApplyingCoupon"
                       @click="removeCart(item.id)"
                     >
                       <i class="fas fa-times fa-sm"></i>
@@ -113,13 +140,15 @@
                   type="text"
                   class="form-control"
                   placeholder="請輸入優惠碼"
-                  :disabled="isApplyingCoupon"
+                  :disabled="isApplyingCoupon || isUpdatingCart"
                 />
                 <div class="input-group-append">
                   <button
                     type="submit"
                     class="btn btn-main03"
-                    :disabled="!couponCode || isApplyingCoupon"
+                    :disabled="
+                      !couponCode || isApplyingCoupon || isUpdatingCart
+                    "
                   >
                     {{ isApplyingCoupon ? "套用中…" : "套用優惠碼" }}
                   </button>
@@ -150,6 +179,7 @@
               type="button"
               class="btn btn-outline-main01 btn-block"
               active-class=""
+              :disabled="isUpdatingCart || isApplyingCoupon"
               @click="checkout(false)"
             >
               查看購物車
@@ -157,7 +187,7 @@
             <button
               type="button"
               class="btn btn-main01 btn-block"
-              :disabled="isApplyingCoupon"
+              :disabled="isApplyingCoupon || isUpdatingCart"
               @click="checkout(true)"
             >
               前往結帳
@@ -216,6 +246,7 @@ export default {
       isScrolled: true,
       screenSize: "md",
       offcanvas: false,
+      isUpdatingCart: false,
       couponCode: "",
       isApplyingCoupon: false,
       couponMessage: "",
@@ -223,8 +254,35 @@ export default {
     };
   },
   methods: {
+    async updateQuantity(item, change) {
+      const qty = Number(item.qty) + change;
+      if (this.isUpdatingCart || this.isApplyingCoupon || qty < 1) {
+        return;
+      }
+      this.isUpdatingCart = true;
+      try {
+        const res = await this.$store.dispatch("frontend/updateCart", {
+          id: item.id,
+          productId: item.product.id,
+          qty,
+        });
+        if (!res.data.success) {
+          this.$bus.$emit("message:push", res.data.message, "danger");
+        }
+      } catch (error) {
+        this.$bus.$emit(
+          "message:push",
+          "更新購物車數量失敗，請稍後再試",
+          "danger"
+        );
+      } finally {
+        this.isUpdatingCart = false;
+      }
+    },
+
     async applyCoupon() {
-      if (!this.couponCode || this.isApplyingCoupon) return;
+      if (!this.couponCode || this.isApplyingCoupon || this.isUpdatingCart)
+        return;
       this.isApplyingCoupon = true;
       this.couponMessage = "";
       this.couponSuccess = false;
@@ -279,6 +337,7 @@ export default {
       }
     },
     checkout(boolean) {
+      if (this.isUpdatingCart || this.isApplyingCoupon) return;
       this.$store.dispatch("frontend/checkout", boolean);
       if (this.$route.path !== "/carts") {
         this.$router.push("/carts");
